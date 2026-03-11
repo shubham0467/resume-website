@@ -1,0 +1,22 @@
+<nav class="navbar">
+  <div class="logo">Shubham Pal</div>
+
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/about">About</a></li>
+    <li><a routerLink="/skills">Skills</a></li>
+    <li><a routerLink="/experience">Experience</a></li>
+    <li><a routerLink="/projects">Projects</a></li>
+    <li><a routerLink="/contact">Contact</a></li>
+  </ul>
+
+  <div class="navbar-buttons">
+    <!-- Dark Mode Toggle -->
+    <div class="theme-switch">
+      <input type="checkbox" id="darkModeToggle" (change)="toggleTheme()" [checked]="darkMode"/>
+      <label for="darkModeToggle">
+        <span class="toggle-ball"></span>
+      </label>
+    </div>
+  </div>
+</nav>

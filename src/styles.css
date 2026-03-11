@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* theme colors and variables */
+:root {
+  --bg-primary: #0f172a;
+  --bg-light: #ffffff;
+  --accent1: #667eea;
+  --accent2: #764ba2;
+  --accent3: #3b82f6;
+  --accent4: #4ade80;
+  --accent5: #ffd700;
+  --text-light: #ffffff;
+  --text-dark: #000000;
+  --text-muted: #6b7280;
+  --text-muted-dark: #9ca3af;
+  --nav-bg: var(--bg-primary);
+  --card-bg: rgba(255,255,255,0.12);
+  --tag-bg: #eef2ff;
+  --tag-bg-dark: #374151;
+  --tag-text: #3730a3;
+  --tag-text-dark: #c7d2fe;
+  /* shared full-page gradient matching contact component */
+  --bg-gradient: linear-gradient(135deg, var(--accent1), var(--accent2));
+  /* dark mode gradient - deeper purple/blue */
+  --bg-gradient-dark: linear-gradient(135deg, #1a1a3e, #0f0f2e);
+}
+
+/* reset default body margins and prevent unwanted horizontal scroll */
+/* Apply border-box universally so element widths include padding/border */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #0b132b 0%,
+    #1c2541 40%,
+    #3a4ed5 100%
+  );
+}  transition: background 0.3s ease;
+}
+
+body.dark {
+  background: var(--bg-gradient-dark);
+}
+
+.dark-mode{
+  background:#0f172a;
+  color:white;
+}

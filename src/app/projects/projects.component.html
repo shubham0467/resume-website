@@ -1,19 +1,18 @@
-<section class="projects">
-
-<h2>Projects</h2>
-
 <div class="project-grid">
+<div *ngFor="let repo of repos" class="project-card">
 
-<div class="project-card">
-<h3>Smart Parking System</h3>
-<p>YOLOv7 + OpenCV based parking detection system.</p>
+<h3>{{repo.name}}</h3>
+
+<p>{{repo.description}}</p>
+
+<div class="tech">
+  <span *ngFor="let t of repo.tech">{{t}}</span>
 </div>
 
-<div class="project-card">
-<h3>Flutter Mobile App</h3>
-<p>Cross platform mobile application.</p>
-</div>
+<a [href]="repo.url" target="_blank">
+View Project
+</a>
 
 </div>
 
-</section>
+</div>
