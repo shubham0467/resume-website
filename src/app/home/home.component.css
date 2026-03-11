@@ -1,0 +1,22 @@
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:80px;
+}
+
+.hero-text h1{
+font-size:48px;
+}
+
+.hero-text h2{
+color:#3b82f6;
+}
+
+button{
+padding:12px 25px;
+background:#3b82f6;
+border:none;
+color:white;
+border-radius:5px;
+}
