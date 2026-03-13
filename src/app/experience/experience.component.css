@@ -189,53 +189,53 @@
 }
 
 /* Dark Mode */
-body.dark .experience h2,
-body.dark .experience-subtitle {
+:host-context(.dark) .experience h2,
+:host-context(.dark) .experience-subtitle {
   color: var(--text-light);
 }
 
-body.dark .experience-subtitle {
+:host-context(.dark) .experience-subtitle {
   color: var(--text-muted-dark);
 }
 
-body.dark .experience-timeline::before {
+:host-context(.dark) .experience-timeline::before {
   background: linear-gradient(180deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.3), transparent);
 }
 
-body.dark .experience-content {
+:host-context(.dark) .experience-content {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.75) 0%, rgba(25, 35, 50, 0.8) 100%);
   backdrop-filter: blur(10px);
   border-color: rgba(102, 126, 234, 0.35);
   box-shadow: 0 8px 24px rgba(102, 126, 234, 0.1);
 }
 
-body.dark .experience-card:hover .experience-content {
+:host-context(.dark) .experience-card:hover .experience-content {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(25, 35, 50, 0.9) 100%);
   box-shadow: 0 12px 36px rgba(102, 126, 234, 0.15);
   border-color: rgba(102, 126, 234, 0.5);
 }
 
-body.dark .company-info h3 {
+:host-context(.dark) .company-info h3 {
   color: var(--text-light);
 }
 
-body.dark .company,
-body.dark .description {
+:host-context(.dark) .company,
+:host-context(.dark) .description {
   color: var(--text-muted-dark);
 }
 
-body.dark .duration {
+:host-context(.dark) .duration {
   background: rgba(59, 130, 246, 0.15);
   border-color: rgba(59, 130, 246, 0.4);
 }
 
-body.dark .skill-tag {
+:host-context(.dark) .skill-tag {
   background: rgba(102, 126, 234, 0.15);
   color: #a5f3fc;
   border-color: rgba(102, 126, 234, 0.4);
 }
 
-body.dark .skill-tag:hover {
+:host-context(.dark) .skill-tag:hover {
   background: rgba(102, 126, 234, 0.25);
   border-color: #a5f3fc;
 }

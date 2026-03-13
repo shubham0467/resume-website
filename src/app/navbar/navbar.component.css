@@ -4,16 +4,25 @@
   top: 0;
   left: 0;
   width: 100%;
-  margin-bottom: 10px;
   height: 70px;
   z-index: 9999;
-  background: #0f172a;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s, height 0.3s;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  background: rgba(255,255,255,0.55);
+
+  backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+
 }
 
 body {
@@ -27,10 +36,11 @@ body {
   font-size: 1.9rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: var(--text-light);
-  cursor: pointer;
-}
 
+  background: linear-gradient(135deg,var(--accent1),var(--accent3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 /* Navbar Links */
 .navbar ul {
   display: flex;
@@ -40,32 +50,31 @@ body {
 }
 
 .navbar a {
-  color: var(--text-light);
+  color: var(--text-dark);
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
   position: relative;
-  padding: 5px 0;
-  transition: color 0.3s;
+  padding: 6px 0;
+  transition: all 0.3s ease;
 }
 
 .navbar a::after {
   content: '';
-  height: 2px;
-  width: 0;
-  background: var(--accent5);
   position: absolute;
   bottom: 0;
   left: 0;
-  transition: 0.3s;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg,var(--accent1),var(--accent3));
+  transition: width 0.3s;
 }
 
 .navbar a:hover::after {
   width: 100%;
 }
-
 .navbar a:hover {
-  color: var(--accent5);
+  color: var(--accent3);
 }
 
 /* Navbar Buttons */
@@ -152,20 +161,34 @@ body {
   left: 37px;
   background: #fbbf24;
 }
-
-/* Dark Mode for Navbar */
-body.dark .navbar {
-  background: linear-gradient(135deg, #1a1a3e, #0f0f2e);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+.navbar:hover{
+background: rgba(255,255,255,0.70);
 }
 
-body.dark .logo,
-body.dark .navbar a {
-  color: var(--text-light);
+:host-context(.dark) .navbar:hover{
+background: rgba(15,23,42,0.95);
+}
+:host-context(.dark) .navbar {
+  background: rgba(15,23,42,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+  0 4px 20px rgba(0,0,0,0.7),
+  0 0 20px rgba(122,162,255,0.05);
 }
 
-body.dark .navbar a:hover {
-  color: var(--accent5);
+:host-context(.dark) .navbar a {
+  color: #e5e7eb;
+}
+
+:host-context(.dark) .navbar a:hover {
+  color: #7aa2ff;
+}
+
+:host-context(.dark) .logo {
+  background: linear-gradient(135deg,#7aa2ff,#a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Responsive */

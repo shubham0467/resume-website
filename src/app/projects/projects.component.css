@@ -132,26 +132,26 @@
 /* ---------------- DARK MODE ---------------- */
 
 /* Card */
-body.dark .project-card{
+:host-context(.dark) .project-card{
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.75) 0%, rgba(25, 35, 50, 0.8) 100%);
   backdrop-filter: blur(12px);
   border-color: rgba(102, 126, 234, 0.35);
   box-shadow: 0 8px 32px rgba(102, 126, 234, 0.12);
 }
 
-body.dark .project-card::after {
+:host-context(.dark) .project-card::after {
   background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
 }
 
 /* Card hover */
-body.dark .project-card:hover{
+:host-context(.dark) .project-card:hover{
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.88) 0%, rgba(25, 35, 50, 0.92) 100%);
   box-shadow: 0 16px 48px rgba(102, 126, 234, 0.25);
   border-color: rgba(102, 126, 234, 0.5);
 }
 
 /* Title */
-body.dark .project-card h3{
+:host-context(.dark) .project-card h3{
   color: var(--text-light);
   background: linear-gradient(135deg, #667eea, #3b82f6);
   -webkit-background-clip: text;
@@ -160,28 +160,28 @@ body.dark .project-card h3{
 }
 
 /* Description */
-body.dark .project-card p{
+:host-context(.dark) .project-card p{
   color: var(--text-muted-dark);
 }
 
 /* Tech tags */
-body.dark .tech span{
+:host-context(.dark) .tech span{
   background: rgba(102, 126, 234, 0.15);
   color: #a5f3fc;
   border-color: rgba(102, 126, 234, 0.4);
 }
 
-body.dark .tech span:hover {
+:host-context(.dark) .tech span:hover {
   background: rgba(102, 126, 234, 0.25);
   border-color: #a5f3fc;
 }
 
 /* Button */
-body.dark .project-card a{
+:host-context(.dark) .project-card a{
   background: var(--accent3);
 }
 
-body.dark .project-card a:hover{
+:host-context(.dark) .project-card a:hover{
   background: var(--accent1);
 }
 

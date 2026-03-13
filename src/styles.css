@@ -1,57 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* theme colors and variables */
+/* Global Theme Variables */
 :root {
   --bg-primary: #0f172a;
   --bg-light: #ffffff;
+
   --accent1: #667eea;
   --accent2: #764ba2;
   --accent3: #3b82f6;
   --accent4: #4ade80;
   --accent5: #ffd700;
+
   --text-light: #ffffff;
-  --text-dark: #000000;
+  --text-dark: #0f172a;
+
   --text-muted: #6b7280;
   --text-muted-dark: #9ca3af;
+
   --nav-bg: var(--bg-primary);
-  --card-bg: rgba(255,255,255,0.12);
+
+  --card-bg: rgba(255,255,255,0.85);
+
   --tag-bg: #eef2ff;
   --tag-bg-dark: #374151;
+
   --tag-text: #3730a3;
   --tag-text-dark: #c7d2fe;
-  /* shared full-page gradient matching contact component */
-  --bg-gradient: linear-gradient(135deg, var(--accent1), var(--accent2));
-  /* dark mode gradient - deeper purple/blue */
-  --bg-gradient-dark: linear-gradient(135deg, #1a1a3e, #0f0f2e);
+
+  /* Dark mode background */
+  --bg-gradient-dark:
+    linear-gradient(
+      180deg,
+      #0b132b 0%,
+      #1c2541 40%,
+      #0f172a 100%
+    );
 }
 
-/* reset default body margins and prevent unwanted horizontal scroll */
-/* Apply border-box universally so element widths include padding/border */
-*, *::before, *::after {
+/* Reset */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+/* Global body */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-body {
-  margin: 0;
   min-height: 100vh;
-  background: linear-gradient(
-    180deg,
-    #0b132b 0%,
-    #1c2541 40%,
-    #3a4ed5 100%
-  );
-}  transition: background 0.3s ease;
+
+  font-family: 'Poppins', sans-serif;
+
+ background:
+    radial-gradient(circle at 20% 20%, #dbeafe 0%, transparent 40%),
+    radial-gradient(circle at 80% 30%, #e9d5ff 0%, transparent 40%),
+    linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+
+  background-attachment: fixed;
+  transition: background 0.4s ease;
 }
 
+/* Dark mode */
 body.dark {
   background: var(--bg-gradient-dark);
+  color: var(--text-light);
 }
 
-.dark-mode{
-  background:#0f172a;
-  color:white;
+
+/* Dark card */
+body.dark .card {
+  background: rgba(30,41,59,0.75);
+
+  border: 1px solid rgba(102,126,234,0.3);
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.4);
 }

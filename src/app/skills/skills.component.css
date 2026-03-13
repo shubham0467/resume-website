@@ -34,13 +34,15 @@
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+ grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+gap:28px;
 }
 
 .skill-card {
   background: linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(240, 243, 255, 0.88) 100%);
   backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(12px);
+
   border-radius: 12px;
   padding: 28px;
   border: 1.5px solid rgba(102, 126, 234, 0.25);
@@ -124,34 +126,42 @@
   width: 75%;
   background: linear-gradient(135deg, #6db33f, #8bc34a);
 }
-
 /* Dark Mode */
-body.dark .skills h2,
-body.dark .skills-subtitle {
-  color: var(--text-light);
+
+:host-context(.dark) .skills h2{
+  background: linear-gradient(135deg,#7aa2ff,#a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-body.dark .skills-subtitle {
-  color: var(--text-muted-dark);
+:host-context(.dark) .skills-subtitle{
+  color:#bfc7d5;
 }
 
-body.dark .skill-card {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.75) 0%, rgba(25, 35, 50, 0.8) 100%);
-  backdrop-filter: blur(10px);
-  border-color: rgba(102, 126, 234, 0.35);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.1);
+:host-context(.dark) .skill-card{
+  background: linear-gradient(135deg,#1e293b,#111827);
+  border:1px solid rgba(122,162,255,0.35);
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.6),
+  0 0 25px rgba(122,162,255,0.08);
 }
 
-body.dark .skill-card:hover {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(25, 35, 50, 0.9) 100%);
-  box-shadow: 0 12px 36px rgba(102, 126, 234, 0.15);
-  border-color: rgba(102, 126, 234, 0.5);
+:host-context(.dark) .skill-card:hover{
+  transform:translateY(-8px);
+  background: linear-gradient(135deg,#22304a,#111827);
+  border-color:#7aa2ff;
+  box-shadow:
+  0 15px 40px rgba(0,0,0,0.7),
+  0 0 30px rgba(122,162,255,0.15);
 }
 
-body.dark .skill-card h3 {
-  color: var(--text-light);
+:host-context(.dark) .skill-card h3{
+  color:#e4e8f0;
 }
 
-body.dark .progress {
-  background: rgba(255,255,255,0.08);
+:host-context(.dark) .progress{
+  background:rgba(255,255,255,0.08);
+}
+:host-context(.dark) .progress-bar{
+  box-shadow:0 0 10px rgba(122,162,255,0.5);
 }

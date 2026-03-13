@@ -4,8 +4,14 @@ import { Component } from '@angular/core';
   selector: 'app-home',
   imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
-})
+styleUrls: ['./home.component.css']})
 export class HomeComponent {
+
+  downloadResume() {
+    const link = document.createElement('a');
+    link.href = 'assets/shubhampalnew_resume-frontend.pdf';
+    link.download = 'Shubham_Pal_Resume.pdf';
+    link.click();
+  }
 
 }

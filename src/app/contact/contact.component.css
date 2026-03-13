@@ -5,7 +5,7 @@
   width: 100%;
   height: 100vh;
   /* transparent; gradient comes from body */
-  color: var(--text-light);
+  color: var(--text-dark);
   text-align: center;
   font-family: 'Arial', sans-serif;
   overflow: hidden;
@@ -21,6 +21,8 @@
   z-index: 2;
   text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
   margin-bottom: 50px;
+  color: var(--text-dark);
+
 }
 
 /* Card container */
@@ -37,7 +39,6 @@
 .contact-card {
   display: flex;
   align-items: center;
-  background: var(--card-bg);
   padding: 25px 30px;
   border-radius: 20px;
   backdrop-filter: blur(15px);
@@ -72,10 +73,15 @@
 }
 
 /* Card content */
-.contact-card h3 { margin: 0; font-size: 1.2rem; font-weight: bold; }
-.contact-card p { margin: 5px 0 0; }
-.contact-card a { color: var(--text-light); text-decoration: none; font-weight: 500; }
-.contact-card a:hover { text-decoration: underline; color: var(--accent5); }
+.contact-card h3 { margin: 0; font-size: 1.2rem; font-weight: bold;   color: var(--text-dark);
+ }
+.contact-card p { margin: 5px 0 0;  color: var(--text-muted);
+ }
+.contact-card a { 
+   text-decoration: none; font-weight: 500;  color: var(--accent3);
+ }
+.contact-card a:hover { text-decoration: underline;   color: var(--accent2);
+ }
 
 /* Icon colors */
 .contact-card.email .icon { color: #ff6b6b; }
@@ -84,15 +90,15 @@
 .contact-card.phone .icon { color: #4ade80; }
 
 /* Dark Mode Enhancements */
-body.dark .contact-card.github .icon { 
+:host-context(.dark).contact-card.github .icon { 
   color: #e0e0e0;
 }
 
-body.dark .contact-card {
+:host-context(.dark).contact-card {
   background: rgba(255,255,255,0.08);
 }
 
-body.dark .contact-card:hover {
+:host-context(.dark).contact-card:hover {
   background: rgba(255,255,255,0.12);
   box-shadow: 0 20px 40px rgba(0,0,0,0.7);
 }
@@ -100,4 +106,26 @@ body.dark .contact-card:hover {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .contact-cards { flex-direction: column; align-items: center; }
+}
+
+:host-context(.dark) .contact {
+  color: var(--text-light);
+}
+
+:host-context(.dark) .contact h2 {
+  color: var(--text-light);
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+}
+
+:host-context(.dark) .contact-card h3,
+:host-context(.dark) .contact-card p {
+  color: var(--text-light);
+}
+
+:host-context(.dark) .contact-card a {
+  color: var(--text-light);
+}
+
+:host-context(.dark) .contact-card a:hover {
+  color: var(--accent5);
 }
