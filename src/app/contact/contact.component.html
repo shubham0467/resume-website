@@ -1,34 +1,99 @@
 <section class="contact">
-  <h2>Contact Me</h2>
-  <div class="contact-cards">
-    <div class="contact-card email">
-      <span class="icon">📧</span>
-      <div>
-        <h3>Email</h3>
-        <p><a href="mailto:palshubham25@gmail.com">palshubham25@gmail.com</a></p>
+
+  <h2>Get In Touch</h2>
+
+  <div class="contact-container">
+
+    <!-- Contact Cards -->
+    <div class="contact-cards">
+
+      <!-- Email -->
+      <div class="contact-card email">
+        <span class="icon">📧</span>
+        <div>
+          <p>
+            <a href="mailto:palshubham25@gmail.com">
+              palshubham25@gmail.com
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="contact-card linkedin">
-      <span class="icon">💼</span>
-      <div>
-        <h3>LinkedIn</h3>
-        <p><a href="https://www.linkedin.com/in/shubham-pal-a92420bb/" target="_blank">linkedin.com/in/shubham-pal-a92420bb</a></p>
+
+      <!-- LinkedIn -->
+      <div class="contact-card linkedin">
+        <span class="icon">💼</span>
+        <div>
+          <p>
+            <a href="https://www.linkedin.com/in/shubham-pal-a92420bb/" target="_blank">
+              LinkedIn
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="contact-card github">
-      <span class="icon">🐙</span>
-      <div>
-        <h3>GitHub</h3>
-        <p><a href="https://github.com/shubham0467" target="_blank">github.com/shubham0467</a></p>
+
+      <!-- GitHub -->
+      <div class="contact-card github">
+        <span class="icon">🐙</span>
+        <div>
+          <p>
+            <a href="https://github.com/shubham0467" target="_blank">
+              GitHub
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="contact-card phone">
-      <span class="icon">📱</span>
-      <div>
-        <h3>Mobile</h3>
-        <p><a href="tel:9044971210">9044971210</a></p>
-        <p><a href="tel:9550110925">9550110925</a></p>
+
+      <!-- Phone -->
+      <div class="contact-card phone">
+        <span class="icon">📱</span>
+        <div>
+          <p><a href="tel:9044971210">9044971210</a></p>
+          <p><a href="tel:9550110925">9550110925</a></p>
+        </div>
       </div>
+
     </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form-wrapper">
+
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <input type="text"
+                 formControlName="name"
+                 placeholder="Your Name"
+                 required>
+        </div>
+
+        <div class="form-group">
+          <input type="email"
+                 formControlName="email"
+                 placeholder="Your Email"
+                 required>
+        </div>
+
+        <div class="form-group">
+          <textarea
+            formControlName="message"
+            placeholder="Your Message"
+            rows="5"
+            required>
+          </textarea>
+        </div>
+
+        <button class="submit-btn"
+                type="submit"
+                [disabled]="contactForm.invalid || isSending">
+
+          {{ isSending ? 'Sending...' : 'Send Message' }}
+
+        </button>
+
+      </form>
+
+    </div>
+
   </div>
+
 </section>

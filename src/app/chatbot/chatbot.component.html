@@ -1,0 +1,55 @@
+<div class="chat-button" (click)="toggleChat(); $event.stopPropagation()">
+  💬
+</div>
+
+<div class="chat-window" *ngIf="isOpen">
+
+  <div class="chat-header">
+    AI Resume Assistant
+  </div>
+
+  <div class="chat-messages" #chatMessages>
+
+    <div *ngFor="let msg of messages" class="message" [ngClass]="msg.sender">
+
+      <div class="avatar">
+        {{ msg.sender === 'user' ? '🧑' : '🤖' }}
+      </div>
+
+      <div class="bubble">
+        {{ msg.text }}
+      </div>
+
+    </div>
+
+    <div *ngIf="isTyping" class="message bot">
+
+      <div class="avatar">🤖</div>
+
+      <div class="bubble typing">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="chat-input">
+
+    <input
+      [(ngModel)]="userInput"
+      placeholder="Ask about my experience..."
+      (keyup.enter)="sendMessage()"
+    />
+
+    <button (click)="sendMessage()">
+      Send
+    </button>
+
+  </div>
+
+</div>
