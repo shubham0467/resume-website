@@ -1,0 +1,90 @@
+<div class="dashboard">
+
+  <div class="dashboard-header">
+
+    <div>
+      <h1>🛡️ Admin Dashboard</h1>
+      <p>Detailed visitor analytics</p>
+    </div>
+
+    <button
+      class="logout-btn"
+      (click)="logout()">
+      🚪 Logout
+    </button>
+
+  </div>
+
+  <div class="stats-row">
+
+    <div class="stat-card">
+      <div class="stat-icon">👥</div>
+      <div>
+        <span class="stat-label">Total Visitors</span>
+        <strong class="stat-value">
+          {{ totalVisitors }}
+        </strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <div>
+        <span class="stat-label">Total Records</span>
+        <strong class="stat-value">
+          {{ visits.length }}
+        </strong>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>IP Address</th>
+          <th>Country</th>
+          <th>Browser</th>
+          <th>Device</th>
+          <th>Page</th>
+          <th>Referrer</th>
+          <th>Visit Time</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let visit of visits">
+
+          <td>{{ visit.ip }}</td>
+
+          <td>{{ visit.country }}</td>
+
+          <td>{{ visit.browser }}</td>
+
+          <td>{{ visit.device }}</td>
+
+          <td>
+            <span class="page-badge">
+              {{ visit.page }}
+            </span>
+          </td>
+
+          <td>{{ visit.referrer }}</td>
+
+          <td>
+            {{ visit.time | date:'short' }}
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

@@ -7,7 +7,10 @@ import { ContactComponent } from './contact/contact.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
-
+import { AnalyticsComponent } from './analytics/analytics.component';
+import { AdminAnalyticsComponent } from './admin-analytics/admin-analytics.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -17,6 +20,8 @@ export const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'navbar', component: NavbarComponent },
-  {path:'chatbot',component:ChatbotComponent}
-
+  { path: 'chatbot', component: ChatbotComponent },
+  { path: 'analytics', component: AnalyticsComponent },
+  { path: 'admin-login', component: AdminLoginComponent },
+  { path: 'admin-analytics', component: AdminAnalyticsComponent, canActivate: [authGuard] }
 ];

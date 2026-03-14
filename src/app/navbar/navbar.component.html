@@ -8,6 +8,32 @@
     <li><a routerLink="/experience">Experience</a></li>
     <li><a routerLink="/projects">Projects</a></li>
     <li><a routerLink="/contact">Contact</a></li>
+    <li class="dropdown"
+    (mouseenter)="showAnalytics=true"
+    (mouseleave)="showAnalytics=false">
+
+  <a class="dropdown-toggle">
+    Analytics
+    <span class="arrow">▾</span>
+  </a>
+
+  <ul class="dropdown-menu" *ngIf="showAnalytics">
+
+    <li>
+      <a routerLink="/analytics" (click)="showAnalytics=false">
+        📊 Public Analytics
+      </a>
+    </li>
+
+    <li>
+      <a routerLink="/admin-login" (click)="showAnalytics=false">
+        🛡️ Admin Dashboard
+      </a>
+    </li>
+
+  </ul>
+
+</li>
   </ul>
 
   <div class="navbar-buttons">

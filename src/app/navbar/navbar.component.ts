@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 export class NavbarComponent {
   menuActive = false;
   darkMode = false;
+  showAnalytics = false;
 
   toggleMenu() {
     this.menuActive = !this.menuActive;

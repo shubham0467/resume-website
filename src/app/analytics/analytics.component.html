@@ -1,0 +1,55 @@
+<div class="analytics-page">
+
+  <div class="page-header">
+    <h1>📊 Visitor Analytics</h1>
+    <p>Public overview of portfolio visits</p>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon">👥</div>
+    <div>
+      <span class="stat-label">Total Visitors</span>
+      <strong class="stat-value">{{ totalVisitors }}</strong>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Browser</th>
+          <th>Country</th>
+          <th>Visit Time</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let visit of visits">
+
+          <td>
+            <span class="page-badge">
+              {{ visit.page }}
+            </span>
+          </td>
+
+          <td>{{ visit.browser }}</td>
+
+          <td>{{ visit.country }}</td>
+
+          <td>
+            {{ visit.time | date:'short' }}
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
