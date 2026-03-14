@@ -23,7 +23,7 @@ export class AdminAnalyticsComponent implements OnInit {
   ngOnInit() {
 
     this.http.get<any>(
-      "http://localhost:3000/admin-analytics?password=admin123"
+      "https://backend-resume-website.onrender.com/admin-analytics?password=admin123"
     )
     .subscribe(data => {
 

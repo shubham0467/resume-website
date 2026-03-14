@@ -69,7 +69,7 @@ sendMessage() {
 
   this.scrollToBottom();
 
-  this.http.post<any>("http://localhost:3000/chat", {
+  this.http.post<any>("https://backend-resume-website.onrender.com/chat", {
     message: question
   }).subscribe({
 

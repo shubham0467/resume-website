@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
           // Skip admin analytics page
           if (!page.includes("admin-analytics")) {
 
-            this.http.post("http://localhost:3000/track-visit", {
+            this.http.post("https://backend-resume-website.onrender.com/track-visit", {
               page: page
             }).subscribe();
 

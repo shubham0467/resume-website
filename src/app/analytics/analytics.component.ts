@@ -18,7 +18,7 @@ export class AnalyticsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.http.get<any>("http://localhost:3000/analytics")
+    this.http.get<any>("https://backend-resume-website.onrender.com/analytics")
       .subscribe(data => {
 
         this.totalVisitors = data.totalVisitors;
