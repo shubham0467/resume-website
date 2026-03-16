@@ -5,51 +5,99 @@
     <p>Public overview of portfolio visits</p>
   </div>
 
-  <div class="stat-card">
-    <div class="stat-icon">👥</div>
-    <div>
-      <span class="stat-label">Total Visitors</span>
-      <strong class="stat-value">{{ totalVisitors }}</strong>
+  <!-- Loading -->
+  <div class="loading-state" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Loading analytics...</p>
+  </div>
+
+  <ng-container *ngIf="!loading">
+
+    <!-- Stat Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div>
+          <span class="stat-label">Unique Visitors</span>
+          <strong class="stat-value">{{ totalVisitors }}</strong>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📄</div>
+        <div>
+          <span class="stat-label">Total Page Views</span>
+          <strong class="stat-value">{{ totalPageViews }}</strong>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏆</div>
+        <div>
+          <span class="stat-label">Top Page</span>
+          <strong class="stat-value stat-value--sm">{{ topPage }}</strong>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌍</div>
+        <div>
+          <span class="stat-label">Top Country</span>
+          <strong class="stat-value stat-value--sm">{{ topCountry }}</strong>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="table-wrapper">
+    <!-- Charts -->
+    <div class="charts-wrapper">
 
-    <table>
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>📄 Page Visits</h3>
+          <span class="chart-total">{{ totalPageViews }} views</span>
+        </div>
+        <div class="bar-list">
+          <div class="bar-row" *ngFor="let s of pageStats">
+            <span class="bar-label">{{ s.label }}</span>
+            <div class="bar-track">
+              <div class="bar-fill" [style.width.%]="s.pct"></div>
+            </div>
+            <span class="bar-count">{{ s.count }}</span>
+          </div>
+        </div>
+      </div>
 
-      <thead>
-        <tr>
-          <th>Page</th>
-          <th>Browser</th>
-          <th>Country</th>
-          <th>Visit Time</th>
-        </tr>
-      </thead>
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>🌐 Browsers</h3>
+          <span class="chart-total">{{ browserStats.length }} types</span>
+        </div>
+        <div class="bar-list">
+          <div class="bar-row" *ngFor="let s of browserStats">
+            <span class="bar-label">{{ s.label }}</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-fill--teal" [style.width.%]="s.pct"></div>
+            </div>
+            <span class="bar-count">{{ s.count }}</span>
+          </div>
+        </div>
+      </div>
 
-      <tbody>
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>🌍 Countries</h3>
+          <span class="chart-total">{{ countryStats.length }} countries</span>
+        </div>
+        <div class="bar-list">
+          <div class="bar-row" *ngFor="let s of countryStats">
+            <span class="bar-label">{{ s.label }}</span>
+            <div class="bar-track">
+              <div class="bar-fill bar-fill--rose" [style.width.%]="s.pct"></div>
+            </div>
+            <span class="bar-count">{{ s.count }}</span>
+          </div>
+        </div>
+      </div>
 
-        <tr *ngFor="let visit of visits">
+    </div>
 
-          <td>
-            <span class="page-badge">
-              {{ visit.page }}
-            </span>
-          </td>
-
-          <td>{{ visit.browser }}</td>
-
-          <td>{{ visit.country }}</td>
-
-          <td>
-            {{ visit.time | date:'short' }}
-          </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
+  </ng-container>
 
 </div>

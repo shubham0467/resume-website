@@ -44,6 +44,7 @@ import { CommonModule } from '@angular/common';
       display: flex; flex-direction: column; align-items: center;
       gap: 16px; width: 360px;
       animation: cardIn 0.4s ease;
+      transition: background 0.3s, box-shadow 0.3s;
     }
     @keyframes cardIn {
       from { opacity:0; transform: translateY(24px); }
@@ -58,7 +59,8 @@ import { CommonModule } from '@angular/common';
       width: 100%; padding: 13px 14px 13px 40px;
       border: 1.5px solid #e2e8f0; border-radius: 10px;
       font-size: 0.95rem; outline: none;
-      transition: border 0.2s, box-shadow 0.2s;
+      background: white; color: #1e293b;
+      transition: border 0.2s, box-shadow 0.2s, background 0.3s, color 0.3s;
     }
     input:focus { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.15); }
     button {
@@ -71,6 +73,41 @@ import { CommonModule } from '@angular/common';
     }
     button:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(102,126,234,0.55); }
     .error { color: #e53e3e; font-size: 0.84rem; font-weight: 500; }
+
+    /* Dark mode */
+    :host-context(.dark) .login-container {
+      background: linear-gradient(135deg, #0f172a 0%, #1a1035 50%, #2d1b69 100%);
+      background-size: 300% 300%;
+      animation: gradientShift 6s ease infinite;
+    }
+    :host-context(.dark) .login-card {
+      background: #1e1b4b;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,92,246,0.2);
+    }
+    :host-context(.dark) h2 {
+      background: linear-gradient(135deg, #a78bfa, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    :host-context(.dark) .subtitle { color: #64748b; }
+    :host-context(.dark) input {
+      background: #2e2a5e;
+      border-color: rgba(139,92,246,0.3);
+      color: #e2e8f0;
+    }
+    :host-context(.dark) input::placeholder { color: #64748b; }
+    :host-context(.dark) input:focus {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 3px rgba(139,92,246,0.2);
+    }
+    :host-context(.dark) button {
+      background: linear-gradient(135deg, #4c1d95, #7c3aed);
+      box-shadow: 0 6px 20px rgba(139,92,246,0.4);
+    }
+    :host-context(.dark) button:hover {
+      box-shadow: 0 8px 24px rgba(139,92,246,0.55);
+    }
+    :host-context(.dark) .error { color: #f87171; }
   `]
 })
 export class AdminLoginComponent {

@@ -1,90 +1,129 @@
 <div class="dashboard">
 
   <div class="dashboard-header">
-
     <div>
       <h1>🛡️ Admin Dashboard</h1>
       <p>Detailed visitor analytics</p>
     </div>
-
-    <button
-      class="logout-btn"
-      (click)="logout()">
-      🚪 Logout
-    </button>
-
+    <button class="logout-btn" (click)="logout()">🚪 Logout</button>
   </div>
 
-  <div class="stats-row">
+  <!-- Loading -->
+  <div class="loading-state" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Loading analytics...</p>
+  </div>
 
-    <div class="stat-card">
-      <div class="stat-icon">👥</div>
-      <div>
-        <span class="stat-label">Total Visitors</span>
-        <strong class="stat-value">
-          {{ totalVisitors }}
-        </strong>
+  <ng-container *ngIf="!loading">
+
+    <!-- Stat Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div>
+          <span class="stat-label">Unique Visitors</span>
+          <strong class="stat-value">{{ totalVisitors }}</strong>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📄</div>
+        <div>
+          <span class="stat-label">Total Page Views</span>
+          <strong class="stat-value">{{ totalPageViews }}</strong>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏆</div>
+        <div>
+          <span class="stat-label">Top Page</span>
+          <strong class="stat-value stat-value--sm">{{ topPage }}</strong>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌍</div>
+        <div>
+          <span class="stat-label">Top Country</span>
+          <strong class="stat-value stat-value--sm">{{ topCountry }}</strong>
+        </div>
       </div>
     </div>
 
-    <div class="stat-card">
-      <div class="stat-icon">📊</div>
-      <div>
-        <span class="stat-label">Total Records</span>
-        <strong class="stat-value">
-          {{ visits.length }}
-        </strong>
+    <!-- Charts -->
+    <div class="charts-wrapper">
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>📄 Page Visits</h3>
+          <span class="chart-total">{{ totalPageViews }} views</span>
+        </div>
+        <div class="bar-list">
+          <div class="bar-row" *ngFor="let s of pageStats">
+            <span class="bar-label">{{ s.label }}</span>
+            <div class="bar-track"><div class="bar-fill" [style.width.%]="s.pct"></div></div>
+            <span class="bar-count">{{ s.count }}</span>
+          </div>
+        </div>
       </div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>🌐 Browsers</h3>
+          <span class="chart-total">{{ browserStats.length }} types</span>
+        </div>
+        <div class="bar-list">
+          <div class="bar-row" *ngFor="let s of browserStats">
+            <span class="bar-label">{{ s.label }}</span>
+            <div class="bar-track"><div class="bar-fill bar-fill--teal" [style.width.%]="s.pct"></div></div>
+            <span class="bar-count">{{ s.count }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <h3>🌍 Countries</h3>
+          <span class="chart-total">{{ countryStats.length }} countries</span>
+        </div>
+        <div class="bar-list">
+          <div class="bar-row" *ngFor="let s of countryStats">
+            <span class="bar-label">{{ s.label }}</span>
+            <div class="bar-track"><div class="bar-fill bar-fill--rose" [style.width.%]="s.pct"></div></div>
+            <span class="bar-count">{{ s.count }}</span>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-  </div>
+    <!-- Detailed Table -->
+    <div class="section-title">📋 All Visit Records</div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>IP Address</th>
+            <th>Country</th>
+            <th>Browser</th>
+            <th>Device</th>
+            <th>Page</th>
+            <th>Referrer</th>
+            <th>Visit Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let visit of visits">
+            <td><span class="ip-text">{{ visit.ip }}</span></td>
+            <td>{{ visit.country }}</td>
+            <td>{{ visit.browser }}</td>
+            <td>{{ visit.device }}</td>
+            <td><span class="page-badge">{{ getPageLabel(visit.page) }}</span></td>
+            <td><span class="referrer-text">{{ visit.referrer }}</span></td>
+            <td>{{ visit.visit_time | date:'medium' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <div class="table-wrapper">
-
-    <table>
-
-      <thead>
-        <tr>
-          <th>IP Address</th>
-          <th>Country</th>
-          <th>Browser</th>
-          <th>Device</th>
-          <th>Page</th>
-          <th>Referrer</th>
-          <th>Visit Time</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-        <tr *ngFor="let visit of visits">
-
-          <td>{{ visit.ip }}</td>
-
-          <td>{{ visit.country }}</td>
-
-          <td>{{ visit.browser }}</td>
-
-          <td>{{ visit.device }}</td>
-
-          <td>
-            <span class="page-badge">
-              {{ visit.page }}
-            </span>
-          </td>
-
-          <td>{{ visit.referrer }}</td>
-
-          <td>
-            {{ visit.time | date:'short' }}
-          </td>
-
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
+  </ng-container>
 
 </div>

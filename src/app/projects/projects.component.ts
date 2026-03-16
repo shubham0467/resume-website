@@ -18,6 +18,13 @@ export class ProjectsComponent {
     tech: ["Angular", "HTML", "CSS", "TypeScript"]
   },
   {
+    name: "Resume Website-backend",
+    description: "Backend service for the personal developer portfolio website built using Node.js and Express.",
+    url: "https://github.com/shubham0467/backend-resume-website",
+    tech: ["Node.js", "Express.js","postgreSQL"]
+  },
+
+  {
     name: "Smart Parking System",
     description: "AI-based smart parking system using YOLOv7 and OpenCV to detect parking slot occupancy.",
     url: "https://github.com/shubham0467/smart-parking-system",

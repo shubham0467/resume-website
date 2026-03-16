@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../enviroments/enviroment';
 
 interface ChatMessage {
   sender: 'user' | 'bot';
@@ -13,7 +14,7 @@ interface ChatMessage {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './chatbot.component.html',
-  styleUrl: './chatbot.component.css',
+  styleUrls: ['./chatbot.component.css'],
 })
 export class ChatbotComponent {
 
@@ -66,10 +67,9 @@ sendMessage() {
 
   this.userInput = "";
   this.isTyping = true;
-
   this.scrollToBottom();
 
-  this.http.post<any>("https://backend-resume-website.onrender.com/chat", {
+this.http.post<any>(`${environment.API_URL}/chat`, {
     message: question
   }).subscribe({
 

@@ -95,5 +95,12 @@
     </div>
 
   </div>
-
+<!-- ERROR/SUCCESS DIALOG -->
+<div class="dialog" *ngIf="isError || isSuccess">
+  <div class="dialog-content" [ngClass]="{ 'error': isError, 'success': isSuccess }">
+    <h3>{{ isError ? 'Oops!' : 'Success!' }}</h3>
+    <p>{{ dialogMessage }}</p>
+    <button (click)="closeDialog()">Close</button>
+  </div>
+</div>
 </section>
